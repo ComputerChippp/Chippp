@@ -1,0 +1,8 @@
+[
+  { "title": "Robert der lustige", "genre": "Comedy", "year": 2025, "poster": "https://via.placeholder.com/150?text=Inception" },
+  { "title": "The Godfather", "genre": "Crime", "year": 1972, "poster": "https://via.placeholder.com/150?text=Godfather" },
+  { "title": "Interstellar", "genre": "Sci-Fi", "year": 2014, "poster": "https://via.placeholder.com/150?text=Interstellar" },
+  { "title": "Pulp Fiction", "genre": "Crime", "year": 1994, "poster": "https://via.placeholder.com/150?text=Pulp+Fiction" },
+  { "title": "The Dark Knight", "genre": "Action", "year": 2008, "poster": "https://via.placeholder.com/150?text=Dark+Knight" },
+  { "title": "La La Land", "genre": "Romance", "year": 2016, "poster": "https://via.placeholder.com/150?text=La+La+Land" }
+]
