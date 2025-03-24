@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Showcase</title>
+  <style>
+    body { font-family: Arial; margin: 0; padding: 1rem; background: #f5f5f5; }
+    h2 { margin-top: 2rem; }
+    .movie { display: inline-block; margin: 0.5rem; text-align: center; width: 150px; }
+    .poster { width: 150px; height: 225px; object-fit: cover; border-radius: 10px; }
+    .genre-section { margin-bottom: 2rem; }
+    .highlight { border: 3px solid #ff5722; padding: 1rem; background: white; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 Featured Movie</h1>
+  <div id="featured" class="highlight"></div>
+
+  <div id="genre-columns"></div>
+
+  <script>
+    async function loadMovies() {
+      const res = await fetch('movies.json');
+      const movies = await res.json();
+
+      // Pick a random featured movie
+      const featuredMovie = movies[Math.floor(Math.random() * movies.length)];
+      const featuredEl = document.getElementById('featured');
+      featuredEl.innerHTML = renderMovie(featuredMovie);
+
+      // Group movies by genre
+      const genres = {};
+      movies.forEach(movie => {
+        if (!genres[movie.genre]) genres[movie.genre] = [];
+        genres[movie.genre].push(movie);
+      });
+
+      // Display genres
+      const genreColumns = document.getElementById('genre-columns');
+      for (const genre in genres) {
+        const section = document.createElement('div');
+        section.className = 'genre-section';
+        section.innerHTML = `<h2>${genre}</h2>` + genres[genre].map(renderMovie).join('');
+        genreColumns.appendChild(section);
+      }
+    }
+
+    function renderMovie(movie) {
+      return `
+        <div class="movie">
+          <img src="${movie.poster}" class="poster" alt="${movie.title}" />
+          <div><strong>${movie.title}</strong> (${movie.year})</div>
+        </div>
+      `;
+    }
+
+    loadMovies();
+  </script>
+
+</body>
+</html>
